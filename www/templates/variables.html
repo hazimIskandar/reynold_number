@@ -1,0 +1,41 @@
+<ion-view view-title="Variables" ng-controller="ListCtrl">
+  <ion-content>
+    <div class="list">
+      <label class="item item-input item-select">
+        <div class="input-label">
+          Mixture Density, ρ : {{Pmix}}
+          <select>
+            <option class="selected">kg/m3</option>
+          </select>        
+        </div>
+      </label>
+      <label class="item item-input item-select">
+        <div class="input-label">
+          Mixture Viscosity, µ: {{Mmix}}
+          <select>
+            <option class="selected">kg/m.s</option>
+          </select>  
+        </div>      
+      </label>
+      <label class="item item-input item-select">
+        <div class="input-label">
+          Vgas1 : {{Vgas1 * velogas1.selectedUnit.multiplier}}
+        </div>
+        <select ng-model = "velogas1.selectedUnit" ng-options="x.unit for x in velogas1.availableUnits track by x.unit">   
+        </select>
+      </label>
+      <label class="item item-input item-select">
+        <div class="input-label">
+          Vgas2 : {{Vgas2 * velogas2.selectedUnit.multiplier}}
+        </div>
+        <select ng-model = "velogas2.selectedUnit" ng-options="x.unit for x in velogas2.availableUnits track by x.unit">
+        </select> 
+      </label>
+    </div>
+    <div class="row">
+      <div class="col col-50">
+        <a href="#/equations" class="button button-full button-positive">Equations</a>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>

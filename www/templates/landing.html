@@ -1,0 +1,118 @@
+<ion-view view-title="ReGas Calculator" ng-controller="ListCtrl">
+	<ion-content>
+  <form name="myForm" novalidate>
+        <h5>Please choose the gases</h5>
+       	<div class="row">
+         		<div class="col col-75">
+           		<select ng-model="gas1" ng-options="x.name for x in Gases">
+                <option value="">Gas 1</option>
+<!--                <option value=""></option>
+                    <option ng-repeat="x in Gases" value="{{x.name}}">{{x.name}}</option> -->
+              </select>
+
+         		</div>
+         		<div class="col">
+           		<ion-item">
+             			<label class="item item-input">
+                    <input type="number" placeholder="x1" ng-model="x1" class="form" required>
+                  </label>
+           		</ion-item>             
+         		</div>
+       	</div>
+        <div class="row">
+            <div class="col col-75">
+              <select ng-model="gas2" ng-options="x.name for x in Gases">
+                <option value="">Gas 2</option>
+<!--                <option value=""></option>
+                    <option ng-repeat="x in Gases" value="{{x.name}}">{{x.name}}</option> -->
+              </select>
+
+            </div>
+            <div class="col">
+              <ion-item">
+                  <label class="item item-input">
+                    <input type="number" placeholder="x2" ng-model="x2" class="form" required>
+                  </label>
+              </ion-item>             
+            </div>
+        </div>
+      <p ng-show="x1 + x2 != 1" class="warning">The addition of both gas must be equal to 1</p>
+  <div ng-hide="x1 + x2 != 1">    
+   		<div class="list">
+   			<div class="row">
+	   			<div class="col col-50">
+	   				<label class="item item-input">
+	          			<input type="number" placeholder="Pressure" class="form" name="press1" ng-model="press1" required>
+	        	</label>
+	   			</div>
+	   			<div class="col col-50">
+	   				<select ng-options="x.unit for x in pressure.availableUnits track by x.unit"  ng-model = "pressure.selectedUnit" >
+            </select><!-- {{pressure.selectedUnit}} -->
+	   			</div>    	
+    		</div>
+    		<div class="row">
+	   			<div class="col col-50">
+	   				<label class="item item-input">
+	          			<input type="number" placeholder="Temperature" class="form" ng-model="temp1" name="temp1" required>
+	        		</label>
+	   			</div>
+	   			<div class="col col-50">
+	   				<select ng-model = "temperature.selectedUnit" ng-options="x.unit for x in temperature.availableUnits track by x.unit"> 
+            </select>
+	   			</div>    	
+    		</div>
+    		<div class="row">
+	   			<div class="col col-50">
+	   				<label class="item item-input">
+	          			<input type="number" placeholder="Velocity" class="form" ng-model="velo1" name="velo1" required>
+	        		</label>
+	   			</div>
+	   			<div class="col col-50">
+	   				<select ng-model = "velocity.selectedUnit" ng-options="x.unit for x in velocity.availableUnits track by x.unit">   
+            </select>
+	   			</div>    	
+    		</div>
+    		<div class="row">
+	   			<div class="col col-50">
+	   				<label class="item item-input">
+	          			<input type="number" placeholder="Diameter" class="form" ng-model="diame1" name="diame1" required>
+	        		</label>
+	   			</div>
+	   			<div class="col col-50">
+	   				<select ng-model = "diameter.selectedUnit" ng-options="x.unit for x in diameter.availableUnits track by x.unit">   
+            </select>
+	   			</div>    	
+    		</div>
+  		</div>
+      <p ng-show="myForm.$error.required ">***please complete all the data required</p>
+  </div>
+  
+  		<div class="row">
+    		<div class="col col-50">
+		      	<button class="button button-full button-calm" ng-click = "calculate(gas1, x1, gas2, x2, press1, temp1, velo1, diame1, pressure.selectedUnit, temperature.selectedUnit, velocity.selectedUnit, diameter.selectedUnit)" ng-disabled="myForm.$invalid">
+		        	Calculate
+		      	</button>
+    		</div>
+        <div class="col col-50">
+          <button class="button button-full button-assertive" ng-click="reset()">Reset</button>
+        </div>
+  		</div>
+      <div class="padding">
+    		<h3>Reynolds Number: {{answer}}</h3>
+        <h3> {{analysis}}</h3>
+      </div>
+      <div class="row">
+        <div class="col col-50">
+          <a href="#/variables" class="button button-full button-positive">
+              Check Variables
+          </a>
+        </div>
+        <div class="col col-50">
+          <a href="#/analysis" class="button button-full button-positive">
+              Analysis
+          </a>
+        </div>
+      </div>
+    </form>  
+	</ion-content>
+</ion-view>

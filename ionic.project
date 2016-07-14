@@ -1,0 +1,12 @@
+{
+  "name": "firebase",
+  "app_id": "72fe9582",
+  "gulpStartupTasks": [
+    "sass",
+    "watch"
+  ],
+  "watchPatterns": [
+    "www/**/*",
+    "!www/lib/**/*"
+  ]
+}
